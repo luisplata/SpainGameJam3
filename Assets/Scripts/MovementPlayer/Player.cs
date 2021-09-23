@@ -21,7 +21,6 @@ public class Player : MonoBehaviour
     public void OnMovementPlayer(InputAction.CallbackContext value)
     {
         var readValue = value.ReadValue<Vector2>();
-        Debug.Log($"Movement {readValue}");
         if (readValue.y > 0.2f)
         {
             Jumping();
