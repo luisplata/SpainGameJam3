@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Floor
   - Light
+  - Camera
+  - Palanca
   layers:
   - Default
   - TransparentFX
@@ -15,8 +17,10 @@ TagManager:
   - UI
   - String
   - World
-  - 
-  - 
+  - PorDelanteCamara
+  - NearBG
+  - MidBG
+  - FarBG
   - 
   - 
   - 
