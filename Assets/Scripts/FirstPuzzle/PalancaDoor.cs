@@ -10,10 +10,10 @@ public class PalancaDoor : MonoBehaviour
         Debug.Log("entro");
         if(other.gameObject.tag=="Palanca"){
 
-            if (Input.GetKeyDown(KeyCode.E)){
+            /*if (Input.GetKeyDown(KeyCode.E)){
                 palancaActivada=true;
                 Debug.Log(palancaActivada);
-            }
+            }*/
         }
 
     }
