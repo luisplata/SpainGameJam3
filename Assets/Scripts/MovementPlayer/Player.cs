@@ -43,8 +43,7 @@ public class Player : MonoBehaviour
 
     private void CreateChainToOrigin()
     {
-        var rigi = chainSystemPlayer.GetOrigin().GetComponent<Rigidbody2D>();
-        rigi.constraints = RigidbodyConstraints2D.FreezeAll;
+        chainSystemPlayer.GetOrigin().GetComponent<SolarPanel>().BlockAll();
     }
 
     private void IsOnPress()
@@ -113,8 +112,6 @@ public class Player : MonoBehaviour
 
     private void PullPanel()
     {
-        var rigi = chainSystemPlayer.GetOrigin().GetComponent<Rigidbody2D>();
-        rigi.constraints = RigidbodyConstraints2D.None;
-        rigi.constraints = RigidbodyConstraints2D.FreezeRotation;
+        chainSystemPlayer.GetOrigin().GetComponent<SolarPanel>().EnableAll();
     }
 }
