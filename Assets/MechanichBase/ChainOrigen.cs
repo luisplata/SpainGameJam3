@@ -12,6 +12,7 @@ public class ChainOrigen : MonoBehaviour
     [SerializeField] private PlayerControllerBase player;
     [SerializeField] private int maxChains;
     [SerializeField] private LineRenderer linesRender;
+    private Rigidbody2D rb;
     
     private Stack<GameObject> listOfChain;
 
@@ -23,32 +24,30 @@ public class ChainOrigen : MonoBehaviour
         listOfChain = new Stack<GameObject>();
         player.Configure(this);
         linesRender.positionCount = listOfChain.Count;
+        rb = GetComponent<Rigidbody2D>();
+        rb.constraints = RigidbodyConstraints2D.None;
     }
 
     public void CreatedChain()
     {
-        if (listOfChain.Count <= maxChains)
+        var instantiate = Instantiate(chainPrefab);
+        var position = transform.position;
+        instantiate.transform.position = position;
+        if (listOfChain.Count > 0)
         {
-            var instantiate = Instantiate(chainPrefab);
-            var position = transform.position;
-            var dir = player.transform.position - position;
-            instantiate.transform.position = position;
-            var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            if (listOfChain.Count > 0)
-            {
-                listOfChain.Peek().GetComponent<ChainController>().Configure(instantiate.GetComponent<Rigidbody2D>(), angle);
-            }
-            else
-            {
-                player.SetLastChain(instantiate.GetComponent<Rigidbody2D>());
-            }
-
-            instantiate.GetComponent<ChainController>().Configure(GetComponent<Rigidbody2D>(), angle);
-            
-            listOfChain.Push(instantiate);
-            player.Evaluate();
-            isCutLine = false;
+            listOfChain.Peek().GetComponent<ChainController>().Configure(instantiate.GetComponent<Rigidbody2D>());
         }
+        else
+        {
+            player.SetLastChain(instantiate.GetComponent<Rigidbody2D>());
+        }
+
+        instantiate.GetComponent<ChainController>().Configure(GetComponent<Rigidbody2D>());
+        
+        listOfChain.Push(instantiate);
+        player.Evaluate();
+        isCutLine = false;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
     private void Update()
@@ -110,5 +109,12 @@ public class ChainOrigen : MonoBehaviour
     public bool CanCreateChain()
     {
         return listOfChain.Count <= maxChains;
+    }
+
+    public void RemoveChain()
+    {
+        var deletingChain = listOfChain.Pop();
+        listOfChain.Peek().GetComponent<ChainController>().Configure(deletingChain.GetComponent<ChainController>().GetBody());
+        Destroy(deletingChain);
     }
 }

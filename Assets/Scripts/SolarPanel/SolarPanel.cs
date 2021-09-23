@@ -34,7 +34,10 @@ public class SolarPanel : MonoBehaviour
     {
         if (!isInsideInLight)
         {
-            energy -= 1;
+            if (energy > 0)
+            {
+                energy -= 1;   
+            }
         }
         else
         {
