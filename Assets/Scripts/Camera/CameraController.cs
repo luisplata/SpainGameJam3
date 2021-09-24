@@ -1,34 +1,39 @@
+using System.Numerics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    Transform player;
+    Transform target;
     Transform camera_tr;
-    Vector3 CameraVector;
-    Vector3 PlayerVector;
-    float speed = 1f;
+
+    float speed = 0.9f;
+    bool isOut = false; 
 
     void Start() {
         camera_tr = GameObject.FindGameObjectWithTag("Camera").GetComponent<Transform>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-
-        CameraVector = new Vector3(camera_tr.position.x, camera_tr.position.y, camera_tr.position.z);
-        PlayerVector = new Vector3(player.position.x, player.position.y, player.position.z);
+        target = GameObject.FindGameObjectWithTag("targetCamera").GetComponent<Transform>();
     }
-
-    void OnTriggerExit2D(Collider2D other)
+    void Update()
     {
-        //Vector3 cameraPosition = camera_tr;
-        //Vector3 targetPosition = player.transform.position;
-
+        if(isOut){
+            this.transform.position = UnityEngine.Vector3.Lerp(camera_tr.position,target.position,speed * Time.deltaTime);
+        }
+    }
+        void OnTriggerEnter2D(Collider2D other)
+    {
         if (other.gameObject.tag == "Player")
         {
-            float step = speed * Time.deltaTime;
-            this.transform.position = Vector3.MoveTowards(transform.position, player.position, step);
-            //CameraVector = new Vector3(player.position.x,camera_tr.position.y,camera_tr.position.z);
-           // Debug.Log(CameraVector);
+            isOut=false;
+
+        }
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            isOut=true;
 
         }
     }
