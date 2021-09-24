@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,7 +7,6 @@ public class Player : MonoBehaviour
     [SerializeField] private float forceJump;
     [SerializeField] private PlayerControllerBase chainSystemPlayer;
     public delegate void OnActionPlayer(float speed);
-
     public OnActionPlayer OnActionPlayerEvent;
     private Rigidbody2D rb2d;
     private Vector2 inputValue;
@@ -27,8 +23,6 @@ public class Player : MonoBehaviour
     private bool _isOn;
     public void OnAction(InputValue value)
     {
-        OnActionPlayerEvent?.Invoke(5);
-        return;
         if (_isOn)
         {
             IsOnPress();

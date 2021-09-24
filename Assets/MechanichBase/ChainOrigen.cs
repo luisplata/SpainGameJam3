@@ -9,7 +9,7 @@ public class ChainOrigen : MonoBehaviour
 {
     [SerializeField] private GameObject chainPrefab;
     [SerializeField] private float velocityOfReturn;
-    [SerializeField] private PlayerControllerBase player;
+    [SerializeField] private PlayerControllerBase _player;
     [SerializeField] private int maxChains;
     [SerializeField] private LineRenderer linesRender;
     private Rigidbody2D rb;
@@ -22,7 +22,6 @@ public class ChainOrigen : MonoBehaviour
     private void Start()
     {
         listOfChain = new Stack<GameObject>();
-        player.Configure(this);
         linesRender.positionCount = listOfChain.Count;
         rb = GetComponent<Rigidbody2D>();
         rb.constraints = RigidbodyConstraints2D.None;
@@ -39,19 +38,20 @@ public class ChainOrigen : MonoBehaviour
         }
         else
         {
-            player.SetLastChain(instantiate.GetComponent<Rigidbody2D>());
+            _player.SetLastChain(instantiate.GetComponent<Rigidbody2D>());
         }
 
         instantiate.GetComponent<ChainController>().Configure(GetComponent<Rigidbody2D>());
         
         listOfChain.Push(instantiate);
-        player.Evaluate();
+        _player.Evaluate();
         isCutLine = false;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
     private void Update()
     {
+        if (_player == null) return;
         PrintLine();
     }
 
@@ -85,7 +85,7 @@ public class ChainOrigen : MonoBehaviour
         if (!isCutLine)
         {
             linesRender.positionCount = listOfChain.Count + 2;
-            positions[positionCount] = player.transform.position;
+            positions[positionCount] = _player.transform.position;
         }
         
         linesRender.SetPositions(positions);
@@ -114,7 +114,13 @@ public class ChainOrigen : MonoBehaviour
     public void RemoveChain()
     {
         var deletingChain = listOfChain.Pop();
+        if (listOfChain.Count <= 0) return;
         listOfChain.Peek().GetComponent<ChainController>().Configure(deletingChain.GetComponent<ChainController>().GetBody());
         Destroy(deletingChain);
+    }
+
+    public void Configure(PlayerControllerBase player)
+    {
+        _player = player;
     }
 }

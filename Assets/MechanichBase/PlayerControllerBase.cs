@@ -12,11 +12,6 @@ public class PlayerControllerBase : MonoBehaviour
     private bool hasEvaluate;
     private Rigidbody2D _distanceJoinConnectedBody;
 
-    public void Configure(ChainOrigen origen)
-    {
-        origin = origen;
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -57,6 +52,11 @@ public class PlayerControllerBase : MonoBehaviour
     {
         if (other.CompareTag("Respawn"))
         {
+            if (origin == null)
+            {
+                origin = other.GetComponent<ChainOrigen>();
+                origin.Configure(this);
+            }
             origin.CreatedChain();
         }
     }
