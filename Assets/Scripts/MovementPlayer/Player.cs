@@ -38,6 +38,9 @@ public class Player : MonoBehaviour
             IsOffPress();
         }
     }
+    public void OnEnvironment(InputValue value){
+        OnActionPlayerEvent?.Invoke(5);
+    }
 
     private void IsOffPress()
     {
