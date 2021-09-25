@@ -1,24 +1,12 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PalancaDoor : MonoBehaviour
+public class OpenAndCloseDoor : MonoBehaviour
 {
-    public GameObject door;
-
-    //public Transform target;
-    Transform camera_tr;
-
-    void Start()
-    {
-        camera_tr = GameObject.FindGameObjectWithTag("Camera").GetComponent<Transform>();
-    }
-        IEnumerator waitForZoomOut(float time)
-    {
-        yield return new WaitForSeconds(time);
-        
-    }
+    public GameObject doorOpen;
+    public GameObject closeDoor;
+    bool openDoor=false;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -36,8 +24,7 @@ public class PalancaDoor : MonoBehaviour
 
     private void OnActionPlayerEvent(float speed)
     {
-        //camera_tr.position = UnityEngine.Vector3.Lerp(camera_tr.position,target.position,speed * Time.deltaTime);
-       
-        Destroy(door);
+        closeDoor.SetActive(true);
+        doorOpen.SetActive(false);
     }
 }
