@@ -6,8 +6,7 @@ using UnityEngine;
 public class PlayerControllerBase : MonoBehaviour
 {
     [SerializeField] private DistanceJoint2D distanceJoin;
-    [SerializeField] private float maxDistance;
-    private ChainOrigen origin;
+    [SerializeField] private ChainOrigen origin;
     private bool hasCreate;
     private bool hasEvaluate;
     private Rigidbody2D _distanceJoinConnectedBody;
@@ -36,7 +35,7 @@ public class PlayerControllerBase : MonoBehaviour
         if (distanceJoinConnectedBody == null) return false;
         var sqrMagnitude = (distanceJoinConnectedBody.transform.position - transform.position).sqrMagnitude;
         Debug.Log($"Distance is {sqrMagnitude}");
-        return sqrMagnitude > maxDistance;
+        return sqrMagnitude > origin.GetMaxDistance();
     }
 
     public void SetLastChain(Rigidbody2D lastChain)
@@ -52,11 +51,8 @@ public class PlayerControllerBase : MonoBehaviour
     {
         if (other.CompareTag("Respawn"))
         {
-            if (origin == null)
-            {
-                origin = other.GetComponent<ChainOrigen>();
-                origin.Configure(this);
-            }
+            origin = other.GetComponent<ChainOrigen>();
+            origin.Configure(this);
             origin.CreatedChain();
         }
     }

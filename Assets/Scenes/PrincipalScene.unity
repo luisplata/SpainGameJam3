@@ -190,8 +190,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 1470472175}
-  button1: {fileID: 160780929}
-  button2: {fileID: 1111313961}
+  button1: {fileID: 160780933}
+  button2: {fileID: 1111313965}
 --- !u!4 &122846808
 Transform:
   m_ObjectHideFlags: 0
@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 160780932}
   - component: {fileID: 160780931}
   - component: {fileID: 160780930}
+  - component: {fileID: 160780933}
   m_Layer: 0
   m_Name: Square (3)
   m_TagString: Untagged
@@ -318,6 +319,19 @@ Transform:
   m_Father: {fileID: 122846808}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &160780933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160780929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d9517e49add8e442aa4a5a614f14025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonHold: 0
 --- !u!1 &188524044
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,6 +1195,7 @@ GameObject:
   - component: {fileID: 1111313964}
   - component: {fileID: 1111313963}
   - component: {fileID: 1111313962}
+  - component: {fileID: 1111313965}
   m_Layer: 0
   m_Name: Square (4)
   m_TagString: Untagged
@@ -1279,6 +1294,19 @@ Transform:
   m_Father: {fileID: 122846808}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1111313965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111313961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d9517e49add8e442aa4a5a614f14025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonHold: 0
 --- !u!4 &1146169708 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1146169708, guid: 32010f5ffd0c5404e90a3ed090d849f6, type: 3}

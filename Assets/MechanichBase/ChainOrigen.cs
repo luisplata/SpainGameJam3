@@ -11,6 +11,7 @@ public class ChainOrigen : MonoBehaviour
     [SerializeField] private float velocityOfReturn;
     [SerializeField] private PlayerControllerBase _player;
     [SerializeField] private int maxChains;
+    [SerializeField] private float maxDistance;
     [SerializeField] private LineRenderer linesRender;
     private Rigidbody2D rb;
     
@@ -108,7 +109,7 @@ public class ChainOrigen : MonoBehaviour
 
     public bool CanCreateChain()
     {
-        return listOfChain.Count <= maxChains;
+        return listOfChain.Count < maxChains;
     }
 
     public void RemoveChain()
@@ -122,5 +123,10 @@ public class ChainOrigen : MonoBehaviour
     public void Configure(PlayerControllerBase player)
     {
         _player = player;
+    }
+
+    public float GetMaxDistance()
+    {
+        return maxDistance;
     }
 }
