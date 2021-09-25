@@ -8,9 +8,8 @@ public class GetVideoFromUrl : MonoBehaviour
     [SerializeField] private string endpoint;
     [SerializeField] private string parametro;
     [SerializeField] private VideoPlayer video;
-    [SerializeField] private bool isPreparedVideo;
+    public bool isPreparedVideo;
     [SerializeField] private GameObject canvas;
-    public bool IsPrepared => isPreparedVideo;
     private void Start()
     {
         //GuardarIntento();

@@ -10,11 +10,6 @@ public class ControladorDeFinalEnvioDePostComienzoDeVideo : MonoBehaviour
     [SerializeField] private GetVideoFromUrl final, finalAlter;
     public delegate void RespuestaVideo();
 
-    private void Start()
-    {
-        GuardarIntento();
-    }
-    
     private void Post(string palabraSecreta)
     {
         StartCoroutine(RestPost.PostRest($"{endpoint}/api/saveData/{palabraSecreta}", (ResponseGame infoGame) =>
@@ -52,7 +47,7 @@ public class ControladorDeFinalEnvioDePostComienzoDeVideo : MonoBehaviour
 
     IEnumerator PlayVideo(GetVideoFromUrl video)
     {
-        while (!video.IsPrepared)
+        while (!video.isPreparedVideo)
         {
             yield return new WaitForSeconds(0.3f);
         }
@@ -60,15 +55,15 @@ public class ControladorDeFinalEnvioDePostComienzoDeVideo : MonoBehaviour
     }
     IEnumerator PlayVideo(GetVideoFromUrl video,RespuestaVideo callback)
     {
-        while (!video.IsPrepared)
+        while (!video.isPreparedVideo)
         {
             yield return new WaitForSeconds(0.3f);
         }
         video.StartVideo();
         //yield return new WaitForSeconds(video.GetTimeOfVideo());
-        //callback?.Invoke();
+        callback?.Invoke();
     }
-    private void GuardarIntento()
+    public void GuardarIntento()
     {
         StartCoroutine(RestGet.GetRequest($"{endpoint}/api/getConf/palabraSecreta", (ConfigurationGame infoGame) =>
         {
