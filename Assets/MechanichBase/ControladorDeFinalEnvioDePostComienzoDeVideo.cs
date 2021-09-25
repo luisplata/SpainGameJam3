@@ -8,13 +8,9 @@ public class ControladorDeFinalEnvioDePostComienzoDeVideo : MonoBehaviour
 {
     [SerializeField] private string endpoint;
     [SerializeField] private GetVideoFromUrl final, finalAlter;
+    public delegate void RespuestaVideo();
 
     private void Start()
-    {
-        SendMessage();
-    }
-
-    public void SendMessage()
     {
         GuardarIntento();
     }
@@ -37,13 +33,16 @@ public class ControladorDeFinalEnvioDePostComienzoDeVideo : MonoBehaviour
         StartCoroutine(RestGet.GetRequest($"{endpoint}/api/getdata", (PorcentOfGenerator porcent) =>
         {
             Debug.Log($"porcent {porcent.value}");
-            if (float.Parse(porcent.value) >= 100)
+            StartCoroutine(PlayVideo(final, () =>
             {
-                StartCoroutine(PlayVideo(finalAlter));
-            }
-            else
+                StartCoroutine(PlayVideo(finalAlter, () =>
+                {
+                    //Lo que debe hacer cuando termina el video
+                }));   
+            }));
+            
+            if (float.Parse(porcent.value) <= 100)
             {
-                StartCoroutine(PlayVideo(final));
             }
         }, () =>
         {
@@ -59,9 +58,18 @@ public class ControladorDeFinalEnvioDePostComienzoDeVideo : MonoBehaviour
         }
         video.StartVideo();
     }
+    IEnumerator PlayVideo(GetVideoFromUrl video,RespuestaVideo callback)
+    {
+        while (!video.IsPrepared)
+        {
+            yield return new WaitForSeconds(0.3f);
+        }
+        video.StartVideo();
+        //yield return new WaitForSeconds(video.GetTimeOfVideo());
+        //callback?.Invoke();
+    }
     private void GuardarIntento()
     {
-        //http://dev.sgj3.peryloth.com/api/getConf/palabraSecreta
         StartCoroutine(RestGet.GetRequest($"{endpoint}/api/getConf/palabraSecreta", (ConfigurationGame infoGame) =>
         {
             Debug.Log($"Config {infoGame.nombre} value {infoGame.valor}");

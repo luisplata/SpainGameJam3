@@ -17,13 +17,25 @@ public class GetVideoFromUrl : MonoBehaviour
         ObtenerVideoDeCinematicaInicial((string urlVideo) =>
         {
             video.source = VideoSource.Url;
+            urlVideo = urlVideo.Replace('\\',char.MinValue);
             video.url = urlVideo;
+            Debug.Log($"preparado {urlVideo}");
             video.prepareCompleted += source =>
             {
                 isPreparedVideo = true;
                 video.Pause();
             };
         });
+    }
+
+    public float GetTimeOfVideo()
+    {
+        double time = video.frameCount / video.frameRate;
+        System.TimeSpan VideoUrlLength = System.TimeSpan.FromSeconds(time);
+        var totalTime = VideoUrlLength.Seconds;
+        totalTime += (VideoUrlLength.Minutes * 60);
+        Debug.Log($"totalTime {totalTime}");
+        return totalTime;
     }
     private void ObtenerVideoDeCinematicaInicial(Respuesta respuesta)
     {
@@ -39,7 +51,7 @@ public class GetVideoFromUrl : MonoBehaviour
 
     public void StartVideo()
     {
-        video.Play();
         canvas.SetActive(true);
+        video.Play();
     }
 }

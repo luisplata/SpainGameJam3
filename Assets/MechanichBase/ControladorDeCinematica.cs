@@ -38,7 +38,7 @@ public class ControladorDeCinematica : MonoBehaviour
     {
         StartCoroutine(RestGet.GetRequest($"{endpoint}/api/getConf/url_cinematica_inicial", (ConfigurationGame infoGame) =>
         {
-            Debug.Log($"Config {infoGame.nombre} value {infoGame.valor}");
+            //Debug.Log($"Config {infoGame.nombre} value {infoGame.valor}");
             respuesta?.Invoke(infoGame.valor);
         }, () =>
         {
@@ -50,7 +50,7 @@ public class ControladorDeCinematica : MonoBehaviour
     {
         StartCoroutine(RestGet.GetRequest($"{endpoint}/api/getConf/cinematicaFinal", (ConfigurationGame infoGame) =>
         {
-            Debug.Log($"Config {infoGame.nombre} value {infoGame.valor}");
+            //Debug.Log($"Config {infoGame.nombre} value {infoGame.valor}");
             Post(infoGame.valor);
         }, () =>
         {
@@ -62,7 +62,7 @@ public class ControladorDeCinematica : MonoBehaviour
     {
         StartCoroutine(RestGet.GetRequest($"{endpoint}/api/getConf/cinematicaFinalAlternativo", (ConfigurationGame infoGame) =>
         {
-            Debug.Log($"Config {infoGame.nombre} value {infoGame.valor}");
+            //Debug.Log($"Config {infoGame.nombre} value {infoGame.valor}");
             Post(infoGame.valor);
         }, () =>
         {
@@ -86,7 +86,7 @@ public class ControladorDeCinematica : MonoBehaviour
         //http://dev.sgj3.peryloth.com/api/getConf/palabraSecreta
         StartCoroutine(RestGet.GetRequest($"{endpoint}/api/getConf/palabraSecreta", (ConfigurationGame infoGame) =>
         {
-            Debug.Log($"Config {infoGame.nombre} value {infoGame.valor}");
+            //Debug.Log($"Config {infoGame.nombre} value {infoGame.valor}");
             Post(infoGame.valor);
         }, () =>
         {
