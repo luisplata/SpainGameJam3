@@ -23,6 +23,7 @@ jobs:
         targetPlatform:
           - StandaloneWindows64 
           - StandaloneOSX
+          - WebGL 
           #- iOS
     steps:
       - uses: actions/checkout@v2
