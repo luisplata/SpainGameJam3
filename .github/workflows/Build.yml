@@ -23,6 +23,7 @@ jobs:
         targetPlatform:
           - StandaloneWindows64 
           - StandaloneOSX
+          - WebGL 
           #- iOS
     steps:
       - uses: actions/checkout@v2
@@ -65,7 +66,7 @@ jobs:
           unityVersion: ${{ matrix.unityVersion }}
           targetPlatform: ${{ matrix.targetPlatform }}
           versioning: Semantic
-          buildName: FanGameMortalKombat
+          buildName: TheLastHope
           allowDirtyBuild: true
       - uses: actions/upload-artifact@v2
         with:
