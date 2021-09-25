@@ -30,15 +30,15 @@ public class ControladorDeFinalEnvioDePostComienzoDeVideo : MonoBehaviour
             Debug.Log($"porcent {porcent.value}");
             StartCoroutine(PlayVideo(final, () =>
             {
-                StartCoroutine(PlayVideo(finalAlter, () =>
+                if (float.Parse(porcent.value) >= 100)
                 {
-                    //Lo que debe hacer cuando termina el video
-                }));   
+                    StartCoroutine(PlayVideo(finalAlter, () =>
+                    {
+                        //Lo que debe hacer cuando termina el video
+                    }));
+                }
             }));
             
-            if (float.Parse(porcent.value) <= 100)
-            {
-            }
         }, () =>
         {
             //Error
@@ -60,7 +60,8 @@ public class ControladorDeFinalEnvioDePostComienzoDeVideo : MonoBehaviour
             yield return new WaitForSeconds(0.3f);
         }
         video.StartVideo();
-        //yield return new WaitForSeconds(video.GetTimeOfVideo());
+        yield return new WaitForSeconds(video.GetTimeOfVideo());
+        video.StopAll();
         callback?.Invoke();
     }
     public void GuardarIntento()

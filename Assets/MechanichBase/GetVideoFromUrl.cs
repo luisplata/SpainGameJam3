@@ -53,4 +53,10 @@ public class GetVideoFromUrl : MonoBehaviour
         canvas.SetActive(true);
         video.Play();
     }
+
+    public void StopAll()
+    {
+        video.Stop();
+        canvas.SetActive(false);
+    }
 }
