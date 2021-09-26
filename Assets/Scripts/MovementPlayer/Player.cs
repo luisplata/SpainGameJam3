@@ -43,10 +43,12 @@ public class Player : MonoBehaviour
         {
             IsOffPress();
         }
+        animator.SetTrigger("accion");
     }
     public void OnEnvironment(InputValue value){
         Debug.Log("Press");
         OnActionPlayerEvent?.Invoke(5);
+        animator.SetTrigger("boton");
     }
 
     private void IsOffPress()
