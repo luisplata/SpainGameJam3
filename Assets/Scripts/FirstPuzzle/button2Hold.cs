@@ -7,14 +7,14 @@ public class button2Hold : MonoBehaviour
     public bool buttonHold;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Carga")  )
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Carga")|| other.gameObject.CompareTag("Caja")   )
         {
             buttonHold=true;
         }
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Carga") )
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Carga")|| other.gameObject.CompareTag("Caja") )
         {
             buttonHold =false;
         }

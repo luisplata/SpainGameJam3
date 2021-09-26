@@ -1,23 +1,17 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PalancaDoor : MonoBehaviour
+public class ascensorAbajo : MonoBehaviour
 {
-    public GameObject door;
-
-    //public Transform target;
-    Transform camera_tr;
-
+    public Transform door;
+    public Transform toPosition;
+    public bool isDown;
+    float step = 0.01f;
+    public ascensorArriba aArriba;
     void Start()
     {
-        camera_tr = GameObject.FindGameObjectWithTag("Camera").GetComponent<Transform>();
-    }
-        IEnumerator waitForZoomOut(float time)
-    {
-        yield return new WaitForSeconds(time);
-        
+        isDown=false;
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -33,11 +27,20 @@ public class PalancaDoor : MonoBehaviour
             var player = other.gameObject.GetComponent<Player>().OnActionPlayerEvent -= OnActionPlayerEvent;
         }
     }
+    void Update()
+    {
+        if(isDown && !aArriba.isPushing){
+            door.position = Vector3.MoveTowards(door.position, toPosition.position, step);
+        }
+        else{
+
+        }
+
+    }
 
     private void OnActionPlayerEvent(float speed)
     {
-        //camera_tr.position = UnityEngine.Vector3.Lerp(camera_tr.position,target.position,speed * Time.deltaTime);
-       
-        Destroy(door);
+        isDown=true;
+        aArriba.isPushing=false;
     }
 }
