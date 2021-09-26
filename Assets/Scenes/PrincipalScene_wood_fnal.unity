@@ -6175,6 +6175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1579774945}
+  playerObject: {fileID: 1579774941}
   panel: {fileID: 509994170}
 --- !u!1 &234646414
 GameObject:
