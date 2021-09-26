@@ -2,18 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ascensorArriba : MonoBehaviour
+public class ascensorBajarTimer : MonoBehaviour
 {
-    public Transform door;
+    public Transform ascensor;
     public Transform toPosition;
-    public bool isPushing;
+    public Transform toUpPosition;
+
+    bool isDown=false;
+    bool isUp=true;
     float step = 0.01f;
-    public ascensorAbajo aAbajo;
-    void Start()
-    {
-        isPushing=false;
-    }
-    
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -30,15 +28,23 @@ public class ascensorArriba : MonoBehaviour
     }
     void Update()
     {
-        if(isPushing && !aAbajo.isDown){
-            door.position = Vector3.MoveTowards(door.position, toPosition.position, step);
+        if(isDown){
+            ascensor.position = Vector3.MoveTowards(ascensor.position, toPosition.position, step);
         }
-
+        if(isUp){
+            ascensor.position = Vector3.MoveTowards(ascensor.position, toUpPosition.position, step);
+        }
+    }
+    IEnumerator waitTime(float time){
+        isDown=true;
+        isUp=false;
+        yield return new WaitForSeconds(time);
+        isDown=false;
+        isUp=true;
     }
 
     private void OnActionPlayerEvent(float speed)
     {
-        aAbajo.isDown=false;
-        isPushing=true;
+        StartCoroutine(waitTime(8));
     }
 }
