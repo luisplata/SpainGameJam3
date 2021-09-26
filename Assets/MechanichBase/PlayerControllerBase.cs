@@ -11,6 +11,7 @@ public class PlayerControllerBase : MonoBehaviour
     private bool hasCreate;
     private bool hasEvaluate;
     private Rigidbody2D _distanceJoinConnectedBody;
+    public ButtonCustomActivation.OnActivation OnActivate;
 
     public void Configure(ChainOrigen origen)
     {
@@ -63,7 +64,11 @@ public class PlayerControllerBase : MonoBehaviour
         {
             if (other.TryGetComponent(out origin))
             {
-                origin.CreatedChain(this);   
+                if (origin.CanCreateChain())
+                {
+                    origin.CreatedChain(this);
+                    OnActivate?.Invoke();   
+                }
             }
         }
     }
