@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject spriteRobot;
     public delegate void OnActionPlayer(float speed);
+    public AplicationHUD.OnUpdateSlider OnUpdateSliderAction;
+
 
     public OnActionPlayer OnActionPlayerEvent;
     private Rigidbody2D rb2d;
@@ -20,12 +22,23 @@ public class Player : MonoBehaviour
     private bool IsPullPanel;
     private bool shutdown;
 
+    [SerializeField] private float energyTotal;
+    [SerializeField] private int energyMax;
+    [SerializeField] private bool hasDownload = true;
+    
+    private float detaTimeLocal = 0;
+    [SerializeField] private float pullHoldTime;
+    private Vector2 speedTotal;
+    private CheckPoint _checkPoint;
+    [SerializeField] private float velocityOfDownload;
+
     private void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         isJump = false;
         _isOn = true;
         chainSystemPlayer.OnActivate += OnActivate;
+        energyTotal = energyMax;
     }
 
     private void OnActivate()
@@ -127,10 +140,6 @@ public class Player : MonoBehaviour
         rb2d.velocity = beforeVelocity;
     }
 
-    private float detaTimeLocal = 0;
-    [SerializeField] private float pullHoldTime;
-    private Vector2 speedTotal;
-    private CheckPoint _checkPoint;
 
     private void Update()
     {
@@ -146,6 +155,14 @@ public class Player : MonoBehaviour
         else
         {
             detaTimeLocal = 0;
+        }
+
+        if (hasDownload)
+        {
+            if (energyTotal > 0)
+            {
+                energyTotal -= (1 * velocityOfDownload);   
+            }
         }
     }
 
