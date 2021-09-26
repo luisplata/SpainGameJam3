@@ -33,6 +33,7 @@ public class PlayerControllerBase : MonoBehaviour
                 {
                     distanceJoin.enabled = false;
                     origin.CutChain();
+                    origin = null;
                 }
             }
         }

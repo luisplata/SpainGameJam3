@@ -13,6 +13,7 @@ public class SolarPanel : MonoBehaviour
     private bool _playerSayBlock;
     private ChainOrigen _origen;
     private Vector2 speedGlobal;
+    [SerializeField] private float forceJump;
 
     private void Start()
     {
@@ -103,5 +104,10 @@ public class SolarPanel : MonoBehaviour
         speedGlobal = speed;
         //_rigi.constraints = RigidbodyConstraints2D.None;
         //_rigi.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    public void Jump()
+    {
+        _rigi.AddForce(Vector2.up * forceJump,ForceMode2D.Impulse);
     }
 }

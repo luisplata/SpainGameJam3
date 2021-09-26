@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
 
     private void CreateChainToOrigin()
     {
-        chainSystemPlayer.GetOrigin().GetComponent<SolarPanel>().BlockAll();
+        chainSystemPlayer.GetOrigin()?.GetComponent<SolarPanel>().BlockAll();
     }
 
     private void IsOnPress()
@@ -76,6 +76,7 @@ public class Player : MonoBehaviour
         if (isJump) return;
         isJump = true;
         rb2d.AddForce(Vector2.up * forceJump,ForceMode2D.Impulse);
+        chainSystemPlayer.GetOrigin()?.GetComponent<SolarPanel>().Jump();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -117,11 +118,11 @@ public class Player : MonoBehaviour
 
     private void RemoveOnceChain()
     {
-        chainSystemPlayer.GetOrigin().RemoveChain();
+        chainSystemPlayer.GetOrigin()?.RemoveChain();
     }
 
     private void PullPanel()
     {
-        chainSystemPlayer.GetOrigin().GetComponent<SolarPanel>().EnableAll(speedTotal);
+        chainSystemPlayer.GetOrigin()?gi.GetComponent<SolarPanel>().EnableAll(speedTotal);
     }
 }
