@@ -3,9 +3,10 @@
 public class OpenDoorCustom : DoSomething
 {
     [SerializeField] private Animator _animator;
-    [SerializeField] private string trigger;
+    [SerializeField] private string boolean;
+    [SerializeField] private bool values;
     public override void Do()
     {
-        _animator.SetTrigger(trigger);
+        _animator.SetBool(boolean, values);
     }
 }

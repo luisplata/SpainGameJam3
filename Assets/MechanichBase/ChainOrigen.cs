@@ -14,6 +14,7 @@ public class ChainOrigen : MonoBehaviour
     [SerializeField] private LineRenderer linesRender;
     [SerializeField] private bool isConnector;
     [SerializeField] private Collider2D colider;
+    [SerializeField] private Collider2D piso;
     private Rigidbody2D rb;
     
     private Stack<GameObject> listOfChain;
@@ -31,6 +32,7 @@ public class ChainOrigen : MonoBehaviour
         if (isConnector)
         {
             colider.enabled = false;
+            piso.enabled = false;
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
@@ -42,6 +44,7 @@ public class ChainOrigen : MonoBehaviour
         var instantiate = Instantiate(chainPrefab);
         var position = transform.position;
         instantiate.transform.position = position;
+        Debug.Log($"listOfChain.Count {listOfChain.Count}");
         if (listOfChain.Count > 0)
         {
             listOfChain.Peek().GetComponent<ChainController>().Configure(instantiate.GetComponent<Rigidbody2D>());

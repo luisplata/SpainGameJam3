@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,33 +11,18 @@ public class musicaController : MonoBehaviour
     public AudioSource cueva;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("fabrica"))
+
+        if (other.gameObject.TryGetComponent<AudioSource>(out var listen))
         {
-            fabrica.Play();
-            desierto.Stop();
-            bosque.Stop();
-            cueva.Stop();
+            listen.mute = false;
         }
-        if (other.CompareTag("desierto"))
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.TryGetComponent<AudioSource>(out var listen))
         {
-            desierto.Play();
-            fabrica.Stop();
-            bosque.Stop();
-            cueva.Stop();
-        }
-        if (other.CompareTag("cueva"))
-        {
-            cueva.Play();
-            bosque.Stop();
-            desierto.Stop();
-            fabrica.Stop();
-        }
-        if (other.CompareTag("bosque"))
-        {
-            bosque.Play();
-            fabrica.Stop();
-            desierto.Stop();
-            cueva.Stop();
+            listen.mute = true;
         }
     }
 }

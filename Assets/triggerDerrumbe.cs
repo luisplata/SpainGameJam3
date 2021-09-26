@@ -5,11 +5,17 @@ using UnityEngine;
 public class triggerDerrumbe : MonoBehaviour
 {
     public Animator piedrasAnimator;
+    [SerializeField] private int countOfPass;
+    [SerializeField] private int privatePass;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            piedrasAnimator.SetBool("cae",true);
+            privatePass++;
+            if (privatePass >= countOfPass)
+            {
+                piedrasAnimator.SetBool("cae",true);   
+            }
         }
     }
 }
