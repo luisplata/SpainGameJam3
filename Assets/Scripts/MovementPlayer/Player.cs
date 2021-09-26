@@ -27,8 +27,6 @@ public class Player : MonoBehaviour
     private bool _isOn;
     public void OnAction(InputValue value)
     {
-        OnActionPlayerEvent?.Invoke(5);
-        return;
         if (_isOn)
         {
             IsOnPress();
@@ -39,6 +37,7 @@ public class Player : MonoBehaviour
         }
     }
     public void OnEnvironment(InputValue value){
+        Debug.Log("Press");
         OnActionPlayerEvent?.Invoke(5);
     }
 
