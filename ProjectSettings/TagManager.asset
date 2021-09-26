@@ -9,6 +9,10 @@ TagManager:
   - Camera
   - Palanca
   - targetCamera
+  - fabrica
+  - desierto
+  - bosque
+  - cueva
   layers:
   - Default
   - TransparentFX
