@@ -9,27 +9,35 @@ public class ChainOrigen : MonoBehaviour
 {
     [SerializeField] private GameObject chainPrefab;
     [SerializeField] private float velocityOfReturn;
-    [SerializeField] private PlayerControllerBase player;
+    [SerializeField] private PlayerControllerBase _player;
     [SerializeField] private int maxChains;
     [SerializeField] private LineRenderer linesRender;
+    [SerializeField] private bool isConnector;
+    [SerializeField] private BoxCollider2D colider;
     private Rigidbody2D rb;
     
     private Stack<GameObject> listOfChain;
 
     private bool canCreateChain;
     private bool isCutLine;
+    public bool IsConnector => isConnector;
 
     private void Start()
     {
         listOfChain = new Stack<GameObject>();
-        player.Configure(this);
         linesRender.positionCount = listOfChain.Count;
         rb = GetComponent<Rigidbody2D>();
-        rb.constraints = RigidbodyConstraints2D.None;
+        rb.constraints = !isConnector ? RigidbodyConstraints2D.None : RigidbodyConstraints2D.FreezeAll;
+        if (isConnector)
+        {
+            colider.enabled = false;
+        }
     }
 
-    public void CreatedChain()
+    public void CreatedChain(PlayerControllerBase player)
     {
+        _player = player;
+        _player.Configure(this);
         var instantiate = Instantiate(chainPrefab);
         var position = transform.position;
         instantiate.transform.position = position;
@@ -85,7 +93,7 @@ public class ChainOrigen : MonoBehaviour
         if (!isCutLine)
         {
             linesRender.positionCount = listOfChain.Count + 2;
-            positions[positionCount] = player.transform.position;
+            positions[positionCount] = _player.transform.position;
         }
         
         linesRender.SetPositions(positions);

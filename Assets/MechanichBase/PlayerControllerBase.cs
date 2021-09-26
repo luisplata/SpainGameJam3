@@ -23,14 +23,17 @@ public class PlayerControllerBase : MonoBehaviour
         if (DistanceInTwoObject() && hasEvaluate)
         {
             hasEvaluate = false;
-            if (origin.CanCreateChain())
+            if (origin != null)
             {
-                origin.CreatedChain();
-            }
-            else
-            {
-                distanceJoin.enabled = false;
-                origin.CutChain();
+                if (origin.CanCreateChain())
+                {
+                    origin.CreatedChain(this);
+                }
+                else
+                {
+                    distanceJoin.enabled = false;
+                    origin.CutChain();
+                }
             }
         }
     }
@@ -40,7 +43,7 @@ public class PlayerControllerBase : MonoBehaviour
         var distanceJoinConnectedBody = distanceJoin.connectedBody;
         if (distanceJoinConnectedBody == null) return false;
         var sqrMagnitude = (distanceJoinConnectedBody.transform.position - transform.position).sqrMagnitude;
-        Debug.Log($"Distance is {sqrMagnitude}");
+        //Debug.Log($"Distance is {sqrMagnitude}");
         return sqrMagnitude > maxDistance;
     }
 
@@ -57,7 +60,10 @@ public class PlayerControllerBase : MonoBehaviour
     {
         if (other.CompareTag("Respawn"))
         {
-            origin.CreatedChain();
+            if (other.TryGetComponent(out origin))
+            {
+                origin.CreatedChain(this);   
+            }
         }
     }
 

@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 3238610327748129230}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.9, y: 0.56, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.6001, y: 1.6001, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -51,9 +51,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chainPrefab: {fileID: 2161910772413041060, guid: 4eb67af48cd9e3046b0ae67379f669f0, type: 3}
   velocityOfReturn: 0.2
-  player: {fileID: 0}
-  maxChains: 7
+  _player: {fileID: 0}
+  maxChains: 1
   linesRender: {fileID: 3238610327748129328}
+  isConnector: 1
+  colider: {fileID: 744346628}
 --- !u!212 &3238610327748129228
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -125,7 +127,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 0
 --- !u!61 &3238610327748129329
 BoxCollider2D:
   m_ObjectHideFlags: 0

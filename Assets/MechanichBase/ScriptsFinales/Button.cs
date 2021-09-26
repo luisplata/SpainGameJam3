@@ -23,7 +23,7 @@ public class Button : MonoBehaviour
             }
         }
 
-        if (other.gameObject.CompareTag("GameController") && !needPlayer)
+        if ((other.gameObject.CompareTag("GameController") || other.gameObject.CompareTag("Respawn")) && !needPlayer)
         {
             anim.SetBool("touch", true);
             isInside = true;
@@ -39,7 +39,7 @@ public class Button : MonoBehaviour
 
     protected void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("GameController"))
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("GameController") || other.gameObject.CompareTag("Respawn"))
         {
             anim.SetBool("touch", false);
             if (isInside && other.gameObject.TryGetComponent<Player>(out var player))
@@ -53,6 +53,6 @@ public class Button : MonoBehaviour
 
     protected virtual void OnActionPlayerEvent(float speed)
     {
-        _doSomething.Do();
+        _doSomething?.Do();
     }
 }

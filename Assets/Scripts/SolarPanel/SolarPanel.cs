@@ -11,11 +11,13 @@ public class SolarPanel : MonoBehaviour
     private Rigidbody2D _rigi;
     private bool _itIsInFloor;
     private bool _playerSayBlock;
+    private ChainOrigen _origen;
 
     private void Start()
     {
-        energy = 100;
+        energy = maxEnergy;
         _rigi = GetComponent<Rigidbody2D>();
+        _origen = GetComponent<ChainOrigen>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -40,7 +42,7 @@ public class SolarPanel : MonoBehaviour
         {
             if (energy > 0)
             {
-                energy -= 1;   
+                if(!_origen.IsConnector) energy -= 1;
             }
         }
         else
