@@ -88,13 +88,16 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var beforeVelocity = inputValue * Time.deltaTime * speed;
+        speedTotal = inputValue * Time.deltaTime * speed;
+        var beforeVelocity = speedTotal;
         beforeVelocity.y = rb2d.velocity.y;
         rb2d.velocity = beforeVelocity;
     }
 
     private float detaTimeLocal = 0;
     [SerializeField] private float pullHoldTime;
+    private Vector2 speedTotal;
+
     private void Update()
     {
         if (IsPullPanel)
@@ -103,7 +106,7 @@ public class Player : MonoBehaviour
             if (detaTimeLocal > pullHoldTime)
             {
                 detaTimeLocal = 0;
-                RemoveOnceChain();
+                //RemoveOnceChain();
             }
         }
         else
@@ -119,6 +122,6 @@ public class Player : MonoBehaviour
 
     private void PullPanel()
     {
-        chainSystemPlayer.GetOrigin().GetComponent<SolarPanel>().EnableAll();
+        chainSystemPlayer.GetOrigin().GetComponent<SolarPanel>().EnableAll(speedTotal);
     }
 }

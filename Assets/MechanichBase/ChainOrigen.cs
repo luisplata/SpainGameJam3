@@ -13,7 +13,7 @@ public class ChainOrigen : MonoBehaviour
     [SerializeField] private int maxChains;
     [SerializeField] private LineRenderer linesRender;
     [SerializeField] private bool isConnector;
-    [SerializeField] private BoxCollider2D colider;
+    [SerializeField] private Collider2D colider;
     private Rigidbody2D rb;
     
     private Stack<GameObject> listOfChain;
@@ -27,10 +27,11 @@ public class ChainOrigen : MonoBehaviour
         listOfChain = new Stack<GameObject>();
         linesRender.positionCount = listOfChain.Count;
         rb = GetComponent<Rigidbody2D>();
-        rb.constraints = !isConnector ? RigidbodyConstraints2D.None : RigidbodyConstraints2D.FreezeAll;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         if (isConnector)
         {
             colider.enabled = false;
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
 
@@ -55,7 +56,7 @@ public class ChainOrigen : MonoBehaviour
         listOfChain.Push(instantiate);
         player.Evaluate();
         isCutLine = false;
-        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        //rb.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
     private void Update()

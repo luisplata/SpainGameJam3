@@ -12,6 +12,7 @@ public class SolarPanel : MonoBehaviour
     private bool _itIsInFloor;
     private bool _playerSayBlock;
     private ChainOrigen _origen;
+    private Vector2 speedGlobal;
 
     private void Start()
     {
@@ -54,6 +55,8 @@ public class SolarPanel : MonoBehaviour
         }
 
         Block();
+        speedGlobal.y = _rigi.velocity.y;
+        _rigi.velocity = speedGlobal;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -82,6 +85,7 @@ public class SolarPanel : MonoBehaviour
 
     public void BlockAll()
     {
+        speedGlobal = Vector2.zero;
         _playerSayBlock = true;
     }
 
@@ -90,13 +94,14 @@ public class SolarPanel : MonoBehaviour
         if (_itIsInFloor && _playerSayBlock)
         {
             _playerSayBlock = false;
-            _rigi.constraints = RigidbodyConstraints2D.FreezeAll;   
+            //_rigi.constraints = RigidbodyConstraints2D.FreezeAll;   
         }
     }
 
-    public void EnableAll()
+    public void EnableAll(Vector2 speed)
     {
-        _rigi.constraints = RigidbodyConstraints2D.None;
-        _rigi.constraints = RigidbodyConstraints2D.FreezeRotation;
+        speedGlobal = speed;
+        //_rigi.constraints = RigidbodyConstraints2D.None;
+        //_rigi.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 }
