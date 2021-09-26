@@ -5673,34 +5673,6 @@ PrefabInstance:
       propertyPath: bosque
       value: 
       objectReference: {fileID: 745521873}
-    - target: {fileID: 1343315895, guid: 8a18a7d93d77e0b4c99f8ba7944e6500, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 1048587359}
-    - target: {fileID: 1343315895, guid: 8a18a7d93d77e0b4c99f8ba7944e6500, type: 3}
-      propertyPath: forceJump
-      value: 320
-      objectReference: {fileID: 0}
-    - target: {fileID: 1343315895, guid: 8a18a7d93d77e0b4c99f8ba7944e6500, type: 3}
-      propertyPath: spriteRobot
-      value: 
-      objectReference: {fileID: 628822457}
-    - target: {fileID: 1343315896, guid: 8a18a7d93d77e0b4c99f8ba7944e6500, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3690975212285025404, guid: 8a18a7d93d77e0b4c99f8ba7944e6500, type: 3}
-      propertyPath: m_LocalScale.x
-      value: -0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 3690975212285025404, guid: 8a18a7d93d77e0b4c99f8ba7944e6500, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 3690975212285025404, guid: 8a18a7d93d77e0b4c99f8ba7944e6500, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.254
-      objectReference: {fileID: 0}
     - target: {fileID: 7400300803784792994, guid: 8a18a7d93d77e0b4c99f8ba7944e6500, type: 3}
       propertyPath: m_Name
       value: PlayerTest
@@ -5748,26 +5720,6 @@ PrefabInstance:
     - target: {fileID: 7400300803784792998, guid: 8a18a7d93d77e0b4c99f8ba7944e6500, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7400300803784792999, guid: 8a18a7d93d77e0b4c99f8ba7944e6500, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7400300803784793003, guid: 8a18a7d93d77e0b4c99f8ba7944e6500, type: 3}
-      propertyPath: m_Size.x
-      value: 1.4175165
-      objectReference: {fileID: 0}
-    - target: {fileID: 7400300803784793003, guid: 8a18a7d93d77e0b4c99f8ba7944e6500, type: 3}
-      propertyPath: m_Size.y
-      value: 2.2792425
-      objectReference: {fileID: 0}
-    - target: {fileID: 7400300803784793003, guid: 8a18a7d93d77e0b4c99f8ba7944e6500, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.009077072
-      objectReference: {fileID: 0}
-    - target: {fileID: 7400300803784793003, guid: 8a18a7d93d77e0b4c99f8ba7944e6500, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.639621
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a18a7d93d77e0b4c99f8ba7944e6500, type: 3}
@@ -13661,11 +13613,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &628822457 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3690975212285025405, guid: 8a18a7d93d77e0b4c99f8ba7944e6500, type: 3}
-  m_PrefabInstance: {fileID: 215895164}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &635312308
 GameObject:
   m_ObjectHideFlags: 0
@@ -22940,11 +22887,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &1048587359 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3690975211149830408, guid: 8a18a7d93d77e0b4c99f8ba7944e6500, type: 3}
-  m_PrefabInstance: {fileID: 215895164}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1048853583
 GameObject:
   m_ObjectHideFlags: 0
@@ -33488,22 +33430,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7400300803784792994, guid: 8a18a7d93d77e0b4c99f8ba7944e6500, type: 3}
   m_PrefabInstance: {fileID: 215895164}
   m_PrefabAsset: {fileID: 0}
---- !u!70 &1579774942
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1579774941}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0037381046, y: 0.24750109}
-  m_Size: {x: 0.6932721, y: 1.4850022}
-  m_Direction: 0
 --- !u!114 &1579774945 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1343315895, guid: 8a18a7d93d77e0b4c99f8ba7944e6500, type: 3}

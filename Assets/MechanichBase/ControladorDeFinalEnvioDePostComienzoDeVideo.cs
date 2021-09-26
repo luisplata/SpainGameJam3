@@ -64,6 +64,7 @@ public class ControladorDeFinalEnvioDePostComienzoDeVideo : MonoBehaviour
         video.StopAll();
         callback?.Invoke();
     }
+    //Este es la funcion que dedes ejecutar para colocar el video del final y mandar la senal al servidor
     public void GuardarIntento()
     {
         StartCoroutine(RestGet.GetRequest($"{endpoint}/api/getConf/palabraSecreta", (ConfigurationGame infoGame) =>
