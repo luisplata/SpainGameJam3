@@ -110,10 +110,10 @@ MonoBehaviour:
   chainPrefab: {fileID: 2161910772413041060, guid: 4eb67af48cd9e3046b0ae67379f669f0, type: 3}
   velocityOfReturn: 0.2
   _player: {fileID: 0}
-  maxChains: 5
+  maxChains: 3
   linesRender: {fileID: 3238610327748129328}
-  isConnector: 0
-  colider: {fileID: 3238610327748129329}
+  isConnector: 1
+  colider: {fileID: 509994171}
 --- !u!212 &3238610327748129228
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -261,7 +261,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.20000076
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -322,6 +322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxEnergy: 200
   energy: 0
+  forceJump: 0
 --- !u!70 &509994171
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
