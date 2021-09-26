@@ -125,6 +125,7 @@ public class Player : MonoBehaviour
     private float detaTimeLocal = 0;
     [SerializeField] private float pullHoldTime;
     private Vector2 speedTotal;
+    private CheckPoint _checkPoint;
 
     private void Update()
     {
@@ -151,5 +152,15 @@ public class Player : MonoBehaviour
     private void PullPanel()
     {
         chainSystemPlayer.GetOrigin()?.GetComponent<SolarPanel>().EnableAll(speedTotal);
+    }
+
+    public void SetCheckPoint(CheckPoint checkPoint)
+    {
+        _checkPoint = checkPoint;
+    }
+
+    public CheckPoint GetLastCheckPoint()
+    {
+        return _checkPoint;
     }
 }

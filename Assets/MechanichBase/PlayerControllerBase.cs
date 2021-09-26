@@ -45,7 +45,7 @@ public class PlayerControllerBase : MonoBehaviour
         var distanceJoinConnectedBody = distanceJoin.connectedBody;
         if (distanceJoinConnectedBody == null) return false;
         var sqrMagnitude = (distanceJoinConnectedBody.transform.position - transform.position).sqrMagnitude;
-        //Debug.Log($"Distance is {sqrMagnitude}");
+        Debug.Log($"Distance is {sqrMagnitude}");
         return sqrMagnitude > maxDistance;
     }
 

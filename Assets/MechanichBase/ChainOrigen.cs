@@ -44,6 +44,7 @@ public class ChainOrigen : MonoBehaviour
         var instantiate = Instantiate(chainPrefab);
         var position = transform.position;
         instantiate.transform.position = position;
+        Debug.Log($"listOfChain.Count {listOfChain.Count}");
         if (listOfChain.Count > 0)
         {
             listOfChain.Peek().GetComponent<ChainController>().Configure(instantiate.GetComponent<Rigidbody2D>());
