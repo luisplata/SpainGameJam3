@@ -123,6 +123,6 @@ public class Player : MonoBehaviour
 
     private void PullPanel()
     {
-        chainSystemPlayer.GetOrigin()?gi.GetComponent<SolarPanel>().EnableAll(speedTotal);
+        chainSystemPlayer.GetOrigin()?.GetComponent<SolarPanel>().EnableAll(speedTotal);
     }
 }
