@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     private Vector2 inputValue;
     private bool isJump;
     private bool IsPullPanel;
+    private bool shutdown;
 
     private void Start()
     {
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
     private bool _isOn;
     public void OnAction(InputValue value)
     {
+        if (shutdown) return;
         if (_isOn)
         {
             IsOnPress();
@@ -45,7 +47,9 @@ public class Player : MonoBehaviour
         }
         animator.SetTrigger("accion");
     }
-    public void OnEnvironment(InputValue value){
+    public void OnEnvironment(InputValue value)
+    {
+        if (shutdown) return;
         Debug.Log("Press");
         OnActionPlayerEvent?.Invoke(5);
         animator.SetTrigger("boton");
@@ -72,6 +76,7 @@ public class Player : MonoBehaviour
 
     public void OnMove(InputValue value)
     {
+        if (shutdown) return;
         var readValue = value.Get<Vector2>();
         if (readValue.y > 0.2f)
         {
@@ -161,6 +166,14 @@ public class Player : MonoBehaviour
 
     public CheckPoint GetLastCheckPoint()
     {
+        shutdown = false;
+        spriteRobot.SetActive(true);
         return _checkPoint;
+    }
+
+    public void ShutDown()
+    {
+        shutdown = true;
+        spriteRobot.SetActive(false);
     }
 }
