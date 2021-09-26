@@ -5367,6 +5367,10 @@ PrefabInstance:
       propertyPath: bosque
       value: 
       objectReference: {fileID: 745521873}
+    - target: {fileID: 3690975212285025404, guid: 8a18a7d93d77e0b4c99f8ba7944e6500, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -0.4370171
+      objectReference: {fileID: 0}
     - target: {fileID: 7400300803784792994, guid: 8a18a7d93d77e0b4c99f8ba7944e6500, type: 3}
       propertyPath: m_Name
       value: PlayerTest
@@ -5377,11 +5381,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7400300803784792998, guid: 8a18a7d93d77e0b4c99f8ba7944e6500, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -92.4
+      value: -91.8
       objectReference: {fileID: 0}
     - target: {fileID: 7400300803784792998, guid: 8a18a7d93d77e0b4c99f8ba7944e6500, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -14.7
+      value: -14.2
       objectReference: {fileID: 0}
     - target: {fileID: 7400300803784792998, guid: 8a18a7d93d77e0b4c99f8ba7944e6500, type: 3}
       propertyPath: m_LocalPosition.z
