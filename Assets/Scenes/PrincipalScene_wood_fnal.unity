@@ -7123,11 +7123,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7400300803784792998, guid: 8a18a7d93d77e0b4c99f8ba7944e6500, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -91.63
+      value: -92.9
       objectReference: {fileID: 0}
     - target: {fileID: 7400300803784792998, guid: 8a18a7d93d77e0b4c99f8ba7944e6500, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -14.29
+      value: -14.4
       objectReference: {fileID: 0}
     - target: {fileID: 7400300803784792998, guid: 8a18a7d93d77e0b4c99f8ba7944e6500, type: 3}
       propertyPath: m_LocalPosition.z
@@ -41448,10 +41448,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1579774943}
-  fabrica: {fileID: 0}
-  desierto: {fileID: 0}
-  Bosque: {fileID: 0}
-  madera: {fileID: 0}
+  fabrica: {fileID: 8300000, guid: cf685687e1e454350aba4990de39ea93, type: 3}
+  desierto: {fileID: 8300000, guid: bb39c72b068a44801be9510cd3052d37, type: 3}
+  Bosque: {fileID: 8300000, guid: 05413c71e20704036a79fbdfabc07ba7, type: 3}
+  madera: {fileID: 8300000, guid: 7349aa373e5e4405980356602886e353, type: 3}
   zona: 0
 --- !u!82 &1579774943
 AudioSource:
@@ -41462,12 +41462,12 @@ AudioSource:
   m_GameObject: {fileID: 1579774941}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 6165911791486193422, guid: debf9ecabfe5142c8a21efca8eb9d444, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
