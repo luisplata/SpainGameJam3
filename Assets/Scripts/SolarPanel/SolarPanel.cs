@@ -132,4 +132,9 @@ public class SolarPanel : MonoBehaviour
         }
         return ofDownload;
     }
+
+    public void StopMovement()
+    {
+        speedGlobal = Vector2.zero;
+    }
 }

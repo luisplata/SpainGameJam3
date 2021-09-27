@@ -11,6 +11,7 @@ public class AplicationHUD : MonoBehaviour
     [SerializeField] private SolarPanel panel;
     [SerializeField] private Animator ani;
     [SerializeField] private Animator ani2;
+    [SerializeField] private List<GameObject> huds;
 
     private void Start()
     {
@@ -54,5 +55,14 @@ public class AplicationHUD : MonoBehaviour
     }
 
     public delegate void OnUpdateSlider(float porcentaje);
-    
+
+    public void StopAll()
+    {
+        player.OnUpdateSliderAction -= OnUpdateSliderAction;
+        panel.OnUpdateSliderAction -= OnUpdateSliderAction2;
+        foreach (var hud in huds)
+        {
+            hud.SetActive(false);   
+        }
+    }
 }

@@ -108,6 +108,7 @@ public class ChainOrigen : MonoBehaviour
     public void CutChain()
     {
         isCutLine = true;
+        solarPanel.StopMovement();
         StartCoroutine("DeletedChain");
     }
 
