@@ -124,7 +124,11 @@ public class SolarPanel : MonoBehaviour
         {
             throw new Exception("No hay mas");
         }
-        energy -= ofDownload;
+        ofDownload *= velocityOfDownLoad;
+        if (!_origen.IsConnector)
+        {
+            energy -= ofDownload;   
+        }
         return ofDownload;
     }
 }
