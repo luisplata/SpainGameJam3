@@ -8,6 +8,7 @@ public class ControladorDeFinalEnvioDePostComienzoDeVideo : MonoBehaviour
 {
     [SerializeField] private string endpoint;
     [SerializeField] private GetVideoFromUrl final, finalAlter;
+    [SerializeField] private Animator animator;
     public delegate void RespuestaVideo();
 
     private void Post(string palabraSecreta)
@@ -30,11 +31,12 @@ public class ControladorDeFinalEnvioDePostComienzoDeVideo : MonoBehaviour
             Debug.Log($"porcent {porcent.value}");
             StartCoroutine(PlayVideo(final, () =>
             {
-                if (float.Parse(porcent.value) >= 100)
+                if (float.Parse(porcent.value) < 100)
                 {
                     StartCoroutine(PlayVideo(finalAlter, () =>
                     {
                         //Lo que debe hacer cuando termina el video
+                        animator.SetTrigger("end");
                     }));
                 }
             }));

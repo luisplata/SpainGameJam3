@@ -128,7 +128,7 @@ AnimatorStateTransition:
     m_ConditionEvent: open
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: open
+    m_ConditionEvent: luz
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 6089138941186273542}

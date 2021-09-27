@@ -19,6 +19,7 @@ public class SolarPanel : MonoBehaviour
     [SerializeField] private float velocityOfLoad;
     [SerializeField] private float velocityOfDownLoad;
     [SerializeField] private float velocityOfLoadPlayer;
+    [SerializeField] private Animator animationOfPanel;
 
     private void Start()
     {
@@ -33,6 +34,7 @@ public class SolarPanel : MonoBehaviour
         {
             isInsideInLight = true;
             hasDowload = false;
+            animationOfPanel.SetBool("luz", true);
         }
     }
 
@@ -42,6 +44,7 @@ public class SolarPanel : MonoBehaviour
         {
             isInsideInLight = false;
             hasDowload = true;
+            animationOfPanel.SetBool("luz", false);
         }
     }
 
@@ -65,6 +68,7 @@ public class SolarPanel : MonoBehaviour
         Block();
         speedGlobal.y = _rigi.velocity.y;
         _rigi.velocity = speedGlobal;
+        animationOfPanel.SetBool("open", speedGlobal.sqrMagnitude > 1);
         OnUpdateSliderAction?.Invoke(energy / maxEnergy);
     }
 
