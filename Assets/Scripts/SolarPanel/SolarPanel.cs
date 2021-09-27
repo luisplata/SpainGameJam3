@@ -18,6 +18,7 @@ public class SolarPanel : MonoBehaviour
     [SerializeField] private bool hasDowload;
     [SerializeField] private float velocityOfLoad;
     [SerializeField] private float velocityOfDownLoad;
+    [SerializeField] private float velocityOfLoadPlayer;
 
     private void Start()
     {
@@ -124,7 +125,7 @@ public class SolarPanel : MonoBehaviour
         {
             throw new Exception("No hay mas");
         }
-        ofDownload *= velocityOfDownLoad;
+        ofDownload *= velocityOfLoadPlayer;
         if (!_origen.IsConnector)
         {
             energy -= ofDownload;   

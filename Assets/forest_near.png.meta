@@ -185,6 +185,9 @@ TextureImporter:
   - first:
       213: 9152301342454416023
     second: forest_60
+  - first:
+      213: -667477657944627560
+    second: forest_near_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -1562,6 +1565,27 @@ TextureImporter:
       bones: []
       spriteID: 792835a7491830f70800000000000000
       internalID: 9152301342454416023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: forest_near_0
+      rect:
+        serializedVersion: 2
+        x: 3448
+        y: 2439
+        width: 216
+        height: 293
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89663b64b94acb6f0800000000000000
+      internalID: -667477657944627560
       vertices: []
       indices: 
       edges: []

@@ -2,17 +2,25 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class AplicationHUD : MonoBehaviour
 {
     [SerializeField] private Slider slider, slider2;
     [SerializeField] private Player player;
     [SerializeField] private SolarPanel panel;
+    [SerializeField] private Animator ani;
+    [SerializeField] private Animator ani2;
 
     private void Start()
     {
         player.OnUpdateSliderAction += OnUpdateSliderAction;
         panel.OnUpdateSliderAction += OnUpdateSliderAction2;
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(0);
     }
 
     private void OnUpdateSliderAction2(float porcentaje)
@@ -25,6 +33,24 @@ public class AplicationHUD : MonoBehaviour
     {
         Debug.Log($"porcentaje {porcentaje}");
         slider.value = porcentaje;
+        if (porcentaje <= 0)
+        {
+            StartCoroutine(Hurry());
+        }
+    }
+
+    IEnumerator Hurry()
+    {
+        ani2.SetBool("WillDied",true);
+        yield return new WaitForSeconds(5);
+        if (slider.value <= 0)
+        {
+            ani.SetTrigger("died");
+        }
+        else
+        {
+            ani2.SetBool("WillDied", false);
+        }
     }
 
     public delegate void OnUpdateSlider(float porcentaje);
