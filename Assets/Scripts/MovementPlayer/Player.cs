@@ -202,7 +202,7 @@ public class Player : MonoBehaviour
         {
             if (energyTotal < energyMax)
             {
-                var ofDownload = (1 * velocityOfDownload);
+                var ofDownload = 1 * velocityOfLoad;
                 if (chainSystemPlayer.GetOrigin() != null)
                 {
                     try

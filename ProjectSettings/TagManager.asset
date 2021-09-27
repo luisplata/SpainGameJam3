@@ -13,6 +13,9 @@ TagManager:
   - desierto
   - bosque
   - cueva
+  - AudioFabricaCueva
+  - AudioDesierto
+  - AudioBosque
   layers:
   - Default
   - TransparentFX
