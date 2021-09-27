@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     private CheckPoint _checkPoint;
     [SerializeField] private float velocityOfDownload;
     [SerializeField] private float velocityOfLoad;
+    [SerializeField] private SFX sound;
 
     private void Start()
     {
@@ -132,6 +133,7 @@ public class Player : MonoBehaviour
         rb2d.AddForce(Vector2.up * forceJump, ForceMode2D.Impulse);
         chainSystemPlayer.GetOrigin()?.GetComponent<SolarPanel>().Jump();
         animator.SetBool("jump", true);
+        sound.SFXStop();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -147,7 +149,19 @@ public class Player : MonoBehaviour
     {
         speedTotal = inputValue * Time.deltaTime * speed;
 
-        animator.SetBool("walk", speedTotal.sqrMagnitude > 1);
+        if (speedTotal.sqrMagnitude > 1)
+        {
+            animator.SetBool("walk", true);
+            if (!isJump)
+            {
+                sound.SFXAndar();
+            }
+        }
+        else
+        {
+            animator.SetBool("walk", false);
+            sound.SFXStop();
+        }
 
         var beforeVelocity = speedTotal;
         beforeVelocity.y = rb2d.velocity.y;
@@ -203,7 +217,7 @@ public class Player : MonoBehaviour
         {
             if (energyTotal < energyMax)
             {
-                var ofDownload = (1 * velocityOfDownload);
+                var ofDownload = 1 * velocityOfLoad;
                 if (chainSystemPlayer.GetOrigin() != null)
                 {
                     try
