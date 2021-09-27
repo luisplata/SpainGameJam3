@@ -4,22 +4,29 @@ using UnityEngine;
 
 public class fabricaFade : MonoBehaviour
 {
-    public float FadeTime = 1.0f;
+   
+    float FadeTime = 0.25f;
+    float startvolumen = 0f;
 
     AudioSource audioSource;
 
-    void Awake()
+    void Start()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.volume = startvolumen;
         
     }
-
+   
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            StartCoroutine("FadeIn");
             StopCoroutine("FadeOut");
+            StartCoroutine("FadeIn");
+        }
+        if (startvolumen == 0)
+        {
+            startvolumen = 0.1f;
         }
     }
 
@@ -27,23 +34,17 @@ public class fabricaFade : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            StartCoroutine("FadeOut");
             StopCoroutine("FadeIn");
+            StartCoroutine("FadeOut");
         }
     }
 
 
     IEnumerator FadeIn()
-    {
-        float startVolume = audioSource.volume;
-
-        if (startVolume == 0)
-        {
-            startVolume = 0.1f;
-        }
+    {   
         while (audioSource.volume < 1)
         {
-            audioSource.volume += startVolume * Time.deltaTime / FadeTime;
+            audioSource.volume += startvolumen * Time.deltaTime / FadeTime;
 
             yield return null;
         }
@@ -51,11 +52,9 @@ public class fabricaFade : MonoBehaviour
     }
     IEnumerator FadeOut ()
     {
-        float startVolume = audioSource.volume;
-
         while (audioSource.volume > 0)
         {
-            audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
+            audioSource.volume -= startvolumen * Time.deltaTime / FadeTime;
 
             yield return null;
         }
