@@ -16,6 +16,7 @@ TagManager:
   - AudioFabricaCueva
   - AudioDesierto
   - AudioBosque
+  - AudioMadera
   layers:
   - Default
   - TransparentFX

@@ -31,7 +31,7 @@ public class ControladorDeFinalEnvioDePostComienzoDeVideo : MonoBehaviour
             Debug.Log($"porcent {porcent.value}");
             StartCoroutine(PlayVideo(final, () =>
             {
-                if (float.Parse(porcent.value) < 100)
+                if (float.Parse(porcent.value) >= 100)
                 {
                     StartCoroutine(PlayVideo(finalAlter, () =>
                     {
