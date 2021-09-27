@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float energyTotal;
     [SerializeField] private int energyMax;
     [SerializeField] private bool hasDownload = true;
-    
+
     private float detaTimeLocal = 0;
     [SerializeField] private float pullHoldTime;
     private Vector2 speedTotal;
@@ -100,6 +100,7 @@ public class Player : MonoBehaviour
         _isOn = false;
     }
 
+
     public void OnMove(InputValue value)
     {
         if (shutdown) return;
@@ -112,13 +113,13 @@ public class Player : MonoBehaviour
         inputValue = readValue;
         if (inputValue.x < 0 && spriteRobot.transform.localScale.x < 0)
         {
-            var localScaleRobot =spriteRobot.transform.localScale; 
+            var localScaleRobot = spriteRobot.transform.localScale;
             localScaleRobot.x = spriteRobot.transform.localScale.x * -1;
             spriteRobot.transform.localScale = localScaleRobot;
         }
         if (inputValue.x > 0 && spriteRobot.transform.localScale.x > 0)
         {
-            var localScaleRobot =spriteRobot.transform.localScale; 
+            var localScaleRobot = spriteRobot.transform.localScale;
             localScaleRobot.x = spriteRobot.transform.localScale.x * -1;
             spriteRobot.transform.localScale = localScaleRobot;
         }
@@ -128,7 +129,7 @@ public class Player : MonoBehaviour
     {
         if (isJump) return;
         isJump = true;
-        rb2d.AddForce(Vector2.up * forceJump,ForceMode2D.Impulse);
+        rb2d.AddForce(Vector2.up * forceJump, ForceMode2D.Impulse);
         chainSystemPlayer.GetOrigin()?.GetComponent<SolarPanel>().Jump();
         animator.SetBool("jump", true);
     }
@@ -145,9 +146,9 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         speedTotal = inputValue * Time.deltaTime * speed;
-        
+
         animator.SetBool("walk", speedTotal.sqrMagnitude > 1);
-        
+
         var beforeVelocity = speedTotal;
         beforeVelocity.y = rb2d.velocity.y;
         rb2d.velocity = beforeVelocity;
