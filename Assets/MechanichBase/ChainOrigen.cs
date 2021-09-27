@@ -9,12 +9,14 @@ public class ChainOrigen : MonoBehaviour
 {
     [SerializeField] private GameObject chainPrefab;
     [SerializeField] private float velocityOfReturn;
+    [SerializeField] private float velocityOdLoad;
     [SerializeField] private PlayerControllerBase _player;
     [SerializeField] private int maxChains;
     [SerializeField] private LineRenderer linesRender;
     [SerializeField] private bool isConnector;
     [SerializeField] private Collider2D colider;
     [SerializeField] private Collider2D piso;
+    [SerializeField] private SolarPanel solarPanel;
     private Rigidbody2D rb;
     
     private Stack<GameObject> listOfChain;
@@ -40,7 +42,7 @@ public class ChainOrigen : MonoBehaviour
     public void CreatedChain(PlayerControllerBase player)
     {
         _player = player;
-        _player.Configure(this);
+        _player.Configure(this,velocityOdLoad);
         var instantiate = Instantiate(chainPrefab);
         var position = transform.position;
         instantiate.transform.position = position;
@@ -128,5 +130,10 @@ public class ChainOrigen : MonoBehaviour
         var deletingChain = listOfChain.Pop();
         listOfChain.Peek().GetComponent<ChainController>().Configure(deletingChain.GetComponent<ChainController>().GetBody());
         Destroy(deletingChain);
+    }
+
+    public float GetEnergy(float ofDownload)
+    {
+        return solarPanel.DownLoadEnergy(ofDownload);
     }
 }

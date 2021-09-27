@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     private Vector2 speedTotal;
     private CheckPoint _checkPoint;
     [SerializeField] private float velocityOfDownload;
+    [SerializeField] private float velocityOfLoad;
 
     private void Start()
     {
@@ -39,6 +40,16 @@ public class Player : MonoBehaviour
         _isOn = true;
         chainSystemPlayer.OnActivate += OnActivate;
         energyTotal = energyMax;
+        chainSystemPlayer.OnActivate += () =>
+        {
+            hasUpload = true;
+            hasDownload = false;
+        };
+        chainSystemPlayer.OnInactivate += () =>
+        {
+            hasUpload = false;
+            hasDownload = true;
+        };
     }
 
     private void OnActivate()
@@ -47,6 +58,8 @@ public class Player : MonoBehaviour
     }
 
     private bool _isOn;
+    private bool hasUpload;
+
     public void OnAction(InputValue value)
     {
         if (shutdown) return;
@@ -161,8 +174,53 @@ public class Player : MonoBehaviour
         {
             if (energyTotal > 0)
             {
-                energyTotal -= (1 * velocityOfDownload);   
+                var ofDownload = (1 * velocityOfDownload);
+                if (chainSystemPlayer.GetOrigin() != null)
+                {
+                    try
+                    {
+                        chainSystemPlayer.GetOrigin().GetEnergy(ofDownload);
+                    }
+                    catch (Exception)
+                    {
+                        energyTotal -= ofDownload;
+                    }
+                }
+                else
+                {
+                    energyTotal -= ofDownload;
+                }
             }
+            else
+            {
+                energyTotal = 0;
+            }
+            OnUpdateSliderAction?.Invoke(energyTotal / energyMax);
+        }
+
+        if (hasUpload)
+        {
+            if (energyTotal < energyMax)
+            {
+                var ofDownload = (1 * velocityOfDownload);
+                if (chainSystemPlayer.GetOrigin() != null)
+                {
+                    try
+                    {
+                        energyTotal += chainSystemPlayer.GetOrigin().GetEnergy(ofDownload);
+                    }
+                    catch (Exception)
+                    {
+                        energyTotal -= ofDownload;
+                    }
+                }
+                //energyTotal += chainSystemPlayer.GetOrigin()?.GetEnergy();
+            }
+            else
+            {
+                energyTotal = energyMax;
+            }
+            OnUpdateSliderAction?.Invoke(energyTotal / energyMax);
         }
     }
 
@@ -192,5 +250,10 @@ public class Player : MonoBehaviour
     {
         shutdown = true;
         spriteRobot.SetActive(false);
+    }
+
+    public void SetVelocity(float velocity)
+    {
+        velocityOfLoad = velocity;
     }
 }

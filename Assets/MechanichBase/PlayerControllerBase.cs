@@ -7,15 +7,18 @@ public class PlayerControllerBase : MonoBehaviour
 {
     [SerializeField] private DistanceJoint2D distanceJoin;
     [SerializeField] private float maxDistance;
+    [SerializeField] private Player player;
     private ChainOrigen origin;
     private bool hasCreate;
     private bool hasEvaluate;
     private Rigidbody2D _distanceJoinConnectedBody;
     public ButtonCustomActivation.OnActivation OnActivate;
+    public ButtonCustomActivation.OnActivation OnInactivate;
 
-    public void Configure(ChainOrigen origen)
+    public void Configure(ChainOrigen origen, float velocityOfLoad)
     {
         origin = origen;
+        player.SetVelocity(velocityOfLoad);
     }
 
     // Update is called once per frame
@@ -35,6 +38,7 @@ public class PlayerControllerBase : MonoBehaviour
                     distanceJoin.enabled = false;
                     origin.CutChain();
                     origin = null;
+                    OnInactivate?.Invoke();
                 }
             }
         }
@@ -67,7 +71,7 @@ public class PlayerControllerBase : MonoBehaviour
                 if (origin.CanCreateChain())
                 {
                     origin.CreatedChain(this);
-                    OnActivate?.Invoke();   
+                    OnActivate?.Invoke();
                 }
             }
         }

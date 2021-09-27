@@ -14,6 +14,10 @@ public class SolarPanel : MonoBehaviour
     private ChainOrigen _origen;
     private Vector2 speedGlobal;
     [SerializeField] private float forceJump;
+    public AplicationHUD.OnUpdateSlider OnUpdateSliderAction;
+    [SerializeField] private bool hasDowload;
+    [SerializeField] private float velocityOfLoad;
+    [SerializeField] private float velocityOfDownLoad;
 
     private void Start()
     {
@@ -27,6 +31,7 @@ public class SolarPanel : MonoBehaviour
         if (other.CompareTag("Light"))
         {
             isInsideInLight = true;
+            hasDowload = false;
         }
     }
 
@@ -35,6 +40,7 @@ public class SolarPanel : MonoBehaviour
         if (other.CompareTag("Light"))
         {
             isInsideInLight = false;
+            hasDowload = true;
         }
     }
 
@@ -44,20 +50,21 @@ public class SolarPanel : MonoBehaviour
         {
             if (energy > 0)
             {
-                if(!_origen.IsConnector) energy -= 1;
+                if(!_origen.IsConnector && hasDowload) energy -= 1 * velocityOfDownLoad;
             }
         }
-        else
+        else if (isInsideInLight || !hasDowload)
         {
             if (energy < maxEnergy)
             {
-                energy += 1;   
+                energy += 1 * velocityOfLoad;   
             }
         }
 
         Block();
         speedGlobal.y = _rigi.velocity.y;
         _rigi.velocity = speedGlobal;
+        OnUpdateSliderAction?.Invoke(energy / maxEnergy);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -109,5 +116,15 @@ public class SolarPanel : MonoBehaviour
     public void Jump()
     {
         _rigi.AddForce(Vector2.up * forceJump,ForceMode2D.Impulse);
+    }
+
+    public float DownLoadEnergy(float ofDownload)
+    {
+        if (energy <= 0)
+        {
+            throw new Exception("No hay mas");
+        }
+        energy -= ofDownload;
+        return ofDownload;
     }
 }
