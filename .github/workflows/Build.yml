@@ -24,6 +24,7 @@ jobs:
           - StandaloneWindows64 
           - StandaloneOSX
           - WebGL 
+          - Android
           #- iOS
     steps:
       - uses: actions/checkout@v2
