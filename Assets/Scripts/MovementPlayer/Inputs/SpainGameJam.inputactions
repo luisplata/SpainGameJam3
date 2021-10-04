@@ -261,17 +261,6 @@
                 },
                 {
                     "name": "",
-                    "id": "d27c227b-174f-483b-a416-5a31a9081a48",
-                    "path": "<Touchscreen>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "1c5b905e-2793-4507-9bcd-0277d7a52ce5",
                     "path": "<Keyboard>/e",
                     "interactions": "",
@@ -285,17 +274,6 @@
                     "name": "",
                     "id": "d431d46d-4a34-4167-8258-63a15b8f0521",
                     "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/button7",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "70d55081-166a-43b5-8891-76627ce0fb5b",
-                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
