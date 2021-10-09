@@ -133,7 +133,7 @@ public class Player : MonoBehaviour
         rb2d.AddForce(Vector2.up * forceJump, ForceMode2D.Impulse);
         chainSystemPlayer.GetOrigin()?.GetComponent<SolarPanel>().Jump();
         animator.SetBool("jump", true);
-        sound.SFXStop();
+        sound?.SFXStop();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -154,13 +154,13 @@ public class Player : MonoBehaviour
             animator.SetBool("walk", true);
             if (!isJump)
             {
-                sound.SFXAndar();
+                sound?.SFXAndar();
             }
         }
         else
         {
             animator.SetBool("walk", false);
-            sound.SFXStop();
+            sound?.SFXStop();
         }
 
         var beforeVelocity = speedTotal;
