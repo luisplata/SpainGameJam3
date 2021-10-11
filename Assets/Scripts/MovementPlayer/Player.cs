@@ -106,10 +106,7 @@ public class Player : MonoBehaviour
     {
         if (shutdown) return;
         var readValue = value.Get<Vector2>();
-        if (readValue.y > 0.2f)
-        {
-            Jumping();
-        }
+        Debug.Log(readValue);
         readValue.y = 0;
         inputValue = readValue;
         if (inputValue.x < 0 && spriteRobot.transform.localScale.x < 0)
@@ -126,21 +123,49 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void OnJump(InputValue input)
+    {
+        if (_isOnJump)
+        {
+            IsOnPressJump();
+        }
+        else
+        {
+            IsOffPressJump();
+        }
+        _isOnJump = !_isOnJump;
+    }
+
+    private void IsOffPressJump()
+    {
+        isJump = false;
+    }
+
+    private void IsOnPressJump()
+    {
+        if (hasJumping) return;
+        rb2d.velocity = Vector2.up * forceJump;
+        Jumping();
+    }
+
     private void Jumping()
     {
-        if (isJump) return;
+        //if (isJump) return;
         isJump = true;
-        rb2d.AddForce(Vector2.up * forceJump, ForceMode2D.Impulse);
-        chainSystemPlayer.GetOrigin()?.GetComponent<SolarPanel>().Jump();
-        animator.SetBool("jump", true);
-        sound?.SFXStop();
+        hasJumping = true;
+        //rb2d.AddForce(Vector2.up * forceJump, ForceMode2D.Impulse);
     }
+
+    public float FallMultipler;
+    public float LowJumMultipler;
+    private bool _isOnJump = true;
+    private bool hasJumping;
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Floor") || other.gameObject.CompareTag("Respawn"))
         {
-            isJump = false;
+            hasJumping = false;
             animator.SetBool("jump", false);
         }
     }
@@ -161,6 +186,7 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("walk", false);
             sound?.SFXStop();
+            speedTotal = Vector2.zero;
         }
 
         var beforeVelocity = speedTotal;
@@ -237,6 +263,29 @@ public class Player : MonoBehaviour
             }
             OnUpdateSliderAction?.Invoke(energyTotal / energyMax);
         }
+        
+        //jumping
+        if (hasJumping)
+        {
+            if (isJump)
+            {
+                if (rb2d.velocity.y < 0)
+                {
+                    rb2d.velocity += Vector2.up * Physics2D.gravity.y * (FallMultipler -1) * Time.deltaTime;
+                }
+                chainSystemPlayer.GetOrigin()?.GetComponent<SolarPanel>().Jump();
+                animator.SetBool("jump", true);
+                sound?.SFXStop();
+            }
+            else
+            {
+                if (rb2d.velocity.y > 0)
+                {
+                    rb2d.velocity += Vector2.up * Physics2D.gravity.y * (FallMultipler -1) * Time.deltaTime;
+                }
+            }
+        }
+        
     }
 
     private void RemoveOnceChain()

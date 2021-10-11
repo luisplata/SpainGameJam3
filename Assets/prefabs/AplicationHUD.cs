@@ -16,7 +16,7 @@ public class AplicationHUD : MonoBehaviour
     private void Start()
     {
         player.OnUpdateSliderAction += OnUpdateSliderAction;
-        panel.OnUpdateSliderAction += OnUpdateSliderAction2;
+        if (panel != null) panel.OnUpdateSliderAction += OnUpdateSliderAction2;
     }
 
     public void RestartGame()
@@ -32,7 +32,7 @@ public class AplicationHUD : MonoBehaviour
 
     private void OnUpdateSliderAction(float porcentaje)
     {
-        Debug.Log($"porcentaje {porcentaje}");
+        //Debug.Log($"porcentaje {porcentaje}");
         slider.value = porcentaje;
         if (porcentaje <= 0)
         {
@@ -59,7 +59,7 @@ public class AplicationHUD : MonoBehaviour
     public void StopAll()
     {
         player.OnUpdateSliderAction -= OnUpdateSliderAction;
-        panel.OnUpdateSliderAction -= OnUpdateSliderAction2;
+        if (panel != null) panel.OnUpdateSliderAction -= OnUpdateSliderAction2;
         foreach (var hud in huds)
         {
             hud.SetActive(false);   
