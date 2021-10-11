@@ -75,7 +75,7 @@ public class GameController : MonoBehaviour
 
     public void Omitir()
     {
-        SceneManager.LoadScene("PrincipalScene_wood_fnal");
+        SceneManager.LoadScene(2);
     }
     public void onClickSalir()
     {
