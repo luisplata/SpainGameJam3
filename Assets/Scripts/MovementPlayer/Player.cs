@@ -125,15 +125,7 @@ public class Player : MonoBehaviour
 
     public void OnJump(InputValue input)
     {
-        if (_isOnJump)
-        {
-            IsOnPressJump();
-        }
-        else
-        {
-            IsOffPressJump();
-        }
-        _isOnJump = !_isOnJump;
+        IsOnPressJump();
     }
 
     private void IsOffPressJump()
