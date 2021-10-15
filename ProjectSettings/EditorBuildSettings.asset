@@ -14,8 +14,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneForPortMovil.unity
     guid: d0ec9c76f49bffc4dbc9992758cd87da
-  - enabled: 1
-    path: Assets/Scenes/PrincipalScene_wood_fnal.unity
-    guid: 417e0dc2ae1ed3a409bdc9bc3a25d2a2
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 47e49d379d91d914084c5684ac89277c, type: 2}
