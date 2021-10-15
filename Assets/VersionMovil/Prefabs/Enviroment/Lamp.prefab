@@ -24,8 +24,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7644749804307343756}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.23, y: -5.66, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.9999693, w: -0.007838598}
+  m_LocalPosition: {x: -0.08, y: -0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7644749806263284464}
@@ -43,35 +43,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LightType: 2
+  m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.99337745, g: 1, b: 0.8066038, a: 1}
   m_Intensity: 1
-  m_LightVolumeOpacity: 0.06
+  m_LightVolumeOpacity: 0.104
   m_ApplyToSortingLayers: 00000000
-  m_LightCookieSprite: {fileID: -3435841830824704455, guid: c13580b2799c96d48a31bb090e81e748, type: 3}
+  m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 1
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 1
-  m_ShadowIntensity: 0
-  m_ShadowVolumeIntensity: 0
-  m_PointLightInnerAngle: 360
-  m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 1
-  m_PointLightDistance: 3
+  m_ShadowIntensity: 0.2
+  m_ShadowVolumeIntensity: 0.2
+  m_PointLightInnerAngle: 14.940002
+  m_PointLightOuterAngle: 66.9
+  m_PointLightInnerRadius: 7.235703
+  m_PointLightOuterRadius: 8.185642
+  m_PointLightDistance: 10
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 0.5
-  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapeLightFalloffSize: 0.66
+  m_ShapeLightFalloffOffset: {x: 0, y: -0.29}
   m_ShapePath:
-  - {x: -0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: 0.5, z: 0}
-  - {x: -0.5, y: 0.5, z: 0}
+  - {x: 2.655342, y: -7.157647, z: 0}
+  - {x: 0.065322876, y: -0.21624279, z: 0}
+  - {x: -0.057632446, y: -0.19861126, z: 0}
+  - {x: -2.7172241, y: -7.1227083, z: 0}
 --- !u!1 &7644749804632766086
 GameObject:
   m_ObjectHideFlags: 0
@@ -1056,4 +1056,4 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1

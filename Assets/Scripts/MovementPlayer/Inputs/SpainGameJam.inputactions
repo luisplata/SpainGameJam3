@@ -339,6 +339,17 @@
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
+                    "groups": "Touch;Keyboard&Mouse;Gamepad;Joystick",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ec0e78c5-fd5e-42e4-b506-1527ece61ae3",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
                     "groups": "",
                     "action": "Jump",
                     "isComposite": false,

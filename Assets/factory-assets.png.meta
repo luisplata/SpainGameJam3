@@ -7,7 +7,7 @@ TextureImporter:
     second: factory-assets_0
   - first:
       213: -3435841830824704455
-    second: factory-assets_1
+    second: LuzFactory
   - first:
       213: 4439829231690825942
     second: factory-assets_2
@@ -220,13 +220,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: factory-assets_1
+      name: LuzFactory
       rect:
         serializedVersion: 2
-        x: 380
-        y: 61
+        x: 386
+        y: 0
         width: 948
-        height: 949
+        height: 1080
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -858,7 +858,7 @@ TextureImporter:
         width: 148
         height: 102
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
